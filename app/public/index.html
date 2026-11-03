@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CmonMusicPlayer</title>
+  <link rel="icon" href="img/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/itunes.css">
+</head>
+<body>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="i-prev" viewBox="0 0 24 24"><path d="M11 6v12L2 12zM21 6v12l-9-6z"/></symbol>
+    <symbol id="i-next" viewBox="0 0 24 24"><path d="M3 6v12l9-6zM13 6v12l9-6z"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4v16l13-8z"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><path d="M6 4h4.5v16H6zM13.5 4H18v16h-4.5z"/></symbol>
+    <symbol id="i-vol-low" viewBox="0 0 16 16"><path d="M2 6h3l4-3v10L5 10H2z"/></symbol>
+    <symbol id="i-vol-high" viewBox="0 0 16 16"><path d="M1 6h2.5L7 3v10L3.5 10H1z"/><path d="M9 5.5a3.5 3.5 0 0 1 0 5M10.5 3.5a6 6 0 0 1 0 9M12 1.8a8.4 8.4 0 0 1 0 12.4" fill="none" stroke="currentColor" stroke-width="1.2"/></symbol>
+    <symbol id="i-search" viewBox="0 0 16 16"><circle cx="6.5" cy="6.5" r="4.3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M9.6 9.6 14 14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 32 32"><path d="M2 16C6 9 11 6.5 16 6.5S26 9 30 16c-4 7-9 9.5-14 9.5S6 23 2 16z" fill="#fff" stroke="#333" stroke-width="1.4"/><circle cx="16" cy="16" r="7" fill="#3a7bd5"/><circle cx="16" cy="16" r="3.4" fill="#111"/><circle cx="13.6" cy="13.4" r="1.6" fill="#fff"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 16 16"><path d="M6.5 2h3v4.5H14v3H9.5V14h-3V9.5H2v-3h4.5z"/></symbol>
+    <symbol id="i-shuffle" viewBox="0 0 20 16"><path d="M1 4h3.5c2.5 0 3.5 1.5 5 4s2.5 4 5 4H16" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M1 12h3.5c1.6 0 2.6-.7 3.5-1.8M11 5.8c.9-1.1 1.9-1.8 3.5-1.8H16" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M15.5 1 19.5 4l-4 3zM15.5 9l4 3-4 3z"/></symbol>
+    <symbol id="i-repeat" viewBox="0 0 20 16"><path d="M4 9V6.5A2.5 2.5 0 0 1 6.5 4H15M16 7v2.5a2.5 2.5 0 0 1-2.5 2.5H5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M14 1l4 3-4 3zM6 9l-4 3 4 3z"/></symbol>
+    <symbol id="i-prefs" viewBox="0 0 16 16"><path d="M8 1.2l1.2.2.4 1.8 1.2.6 1.6-1 1.7 1.7-1 1.6.5 1.2 1.8.4v2.4l-1.8.4-.5 1.2 1 1.6-1.7 1.7-1.6-1-1.2.5-.4 1.8H6.8l-.4-1.8-1.2-.5-1.6 1-1.7-1.7 1-1.6-.5-1.2-1.8-.4V6.8l1.8-.4.5-1.2-1-1.6 1.7-1.7 1.6 1 1.2-.5.4-1.8zM8 5.5A2.5 2.5 0 1 0 8 10.5 2.5 2.5 0 0 0 8 5.5z" fill-rule="evenodd"/></symbol>
+    <symbol id="i-library" viewBox="0 0 16 16"><rect x="1" y="1" width="14" height="14" rx="2" fill="#e8b00e" stroke="#9a6d00"/><path d="M6 4.5l6-1.2v7.2a1.8 1.4 0 1 1-1.2-1.3V5.6L7.2 6.4v5.6a1.8 1.4 0 1 1-1.2-1.3z" fill="#4a3300"/></symbol>
+    <symbol id="i-smart" viewBox="0 0 16 16"><rect x="1" y="1" width="14" height="14" rx="2" fill="#8c6fd6" stroke="#4d3591"/><path d="M8 3.2l.8.1.3 1.1.8.4 1-.6 1.1 1.1-.6 1 .4.8 1.1.3v1.6l-1.1.3-.4.8.6 1-1.1 1.1-1-.6-.8.4-.3 1.1H7.2l-.3-1.1-.8-.4-1 .6-1.1-1.1.6-1-.4-.8-1.1-.3V7.2l1.1-.3.4-.8-.6-1 1.1-1.1 1 .6.8-.4.3-1.1zM8 6.4A1.6 1.6 0 1 0 8 9.6 1.6 1.6 0 0 0 8 6.4z" fill="#fff" fill-rule="evenodd"/></symbol>
+    <symbol id="i-playlist" viewBox="0 0 16 16"><rect x="2" y="1" width="12" height="14" rx="1" fill="#e3edfb" stroke="#4f78b8"/><path d="M7 4l5-1v6.6a1.6 1.3 0 1 1-1-1.2V4.9L8 5.5v5.1a1.6 1.3 0 1 1-1-1.2z" fill="#2357a8"/></symbol>
+    <symbol id="i-speaker" viewBox="0 0 16 16"><path d="M1 6h2.5L7 3v10L3.5 10H1z"/><path d="M9 5.5a3.5 3.5 0 0 1 0 5M10.5 3.5a6 6 0 0 1 0 9" fill="none" stroke="currentColor" stroke-width="1.2"/></symbol>
+    <symbol id="i-snapback" viewBox="0 0 16 16"><path d="M6 3 2 8l4 5V9.5h4.5a2 2 0 0 1 0 4H9V15h1.5a3.5 3.5 0 0 0 0-7H6z"/></symbol>
+    <symbol id="i-note" viewBox="0 0 24 24"><path d="M9 4l12-2.5v14a3.2 2.6 0 1 1-2-2.4V6.2L11 7.8v10.2a3.2 2.6 0 1 1-2-2.4z"/></symbol>
+    <symbol id="i-folder" viewBox="0 0 16 16"><path d="M1 3.5h5l1.5 1.5H15V13H1z" fill="#7aa7e3" stroke="#3f6fb4"/><path d="M1 6h14" stroke="#3f6fb4"/></symbol>
+  </svg>
+
+  <div class="window" id="window">
+    <!-- title bar -->
+    <div class="titlebar">
+      <div class="traffic"><span class="tl red"></span><span class="tl yellow"></span><span class="tl green"></span></div>
+      <div class="title">CmonMusicPlayer</div>
+    </div>
+
+    <!-- toolbar -->
+    <div class="toolbar">
+      <div class="transport">
+        <div class="buttons">
+          <button class="round small" id="btn-prev" title="Previous"><svg><use href="#i-prev"/></svg></button>
+          <button class="round big" id="btn-play" title="Play"><svg><use href="#i-play" id="play-glyph"/></svg></button>
+          <button class="round small" id="btn-next" title="Next"><svg><use href="#i-next"/></svg></button>
+        </div>
+        <div class="volume">
+          <svg class="vol-icon"><use href="#i-vol-low"/></svg>
+          <input type="range" id="volume" min="0" max="1" step="0.01" value="0.8" title="Volume">
+          <svg class="vol-icon"><use href="#i-vol-high"/></svg>
+        </div>
+      </div>
+
+      <div class="lcd" id="lcd">
+        <button class="lcd-snap" id="btn-snap" title="Show current song"><svg><use href="#i-snapback"/></svg></button>
+        <div class="lcd-idle" id="lcd-idle"><svg><use href="#i-note"/></svg></div>
+        <div class="lcd-body" id="lcd-body">
+          <div class="lcd-line" id="lcd-line1"></div>
+          <div class="lcd-line" id="lcd-line2"></div>
+          <div class="lcd-progress" id="lcd-progress">
+            <div class="lcd-fill" id="lcd-fill"></div>
+            <div class="lcd-head" id="lcd-head"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tools">
+        <div class="tool">
+          <label class="searchbox">
+            <svg><use href="#i-search"/></svg>
+            <input type="search" id="search" spellcheck="false" autocomplete="off">
+          </label>
+          <div class="tool-label">Search</div>
+        </div>
+        <div class="tool">
+          <button class="round browse" id="btn-browse" title="Browse"><svg><use href="#i-eye"/></svg></button>
+          <div class="tool-label">Browse</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- main area -->
+    <div class="main">
+      <div class="source-pane" id="source-pane">
+        <div class="pane-header">Source</div>
+        <ul class="source-list" id="source-list" tabindex="0"></ul>
+      </div>
+      <div class="splitter" id="splitter"></div>
+      <div class="content">
+        <div class="browser" id="browser" hidden>
+          <div class="browser-col"><div class="pane-header">Genre</div><ul id="br-genre" tabindex="0"></ul></div>
+          <div class="browser-col"><div class="pane-header">Artist</div><ul id="br-artist" tabindex="0"></ul></div>
+          <div class="browser-col"><div class="pane-header">Album</div><ul id="br-album" tabindex="0"></ul></div>
+        </div>
+        <div class="songs" id="songs">
+          <div class="songs-header" id="songs-header"></div>
+          <div class="songs-body" id="songs-body" tabindex="0">
+            <div class="songs-spacer" id="songs-spacer"></div>
+            <div class="songs-rows" id="songs-rows"></div>
+            <div class="drop-line" id="drop-line" hidden></div>
+            <div class="songs-empty" id="songs-empty" hidden></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- bottom bar -->
+    <div class="bottombar">
+      <div class="bb-left">
+        <button class="square" id="btn-new" title="New Playlist"><svg><use href="#i-plus"/></svg></button>
+        <button class="square" id="btn-shuffle" title="Shuffle"><svg><use href="#i-shuffle"/></svg></button>
+        <button class="square" id="btn-repeat" title="Repeat"><svg><use href="#i-repeat"/></svg><span class="badge" id="repeat-one" hidden>1</span></button>
+        <button class="square" id="btn-prefs" title="Preferences"><svg><use href="#i-prefs"/></svg></button>
+      </div>
+      <div class="status" id="status"></div>
+      <div class="bb-right"></div>
+    </div>
+
+    <!-- preferences sheet -->
+    <div class="sheet-backdrop" id="prefs" hidden>
+      <div class="sheet">
+        <h2>Preferences</h2>
+        <div class="field">
+          <span class="field-label">Music Folder:</span>
+          <span class="field-value" id="pref-folder">(none)</span>
+        </div>
+        <div class="crumbs" id="pref-crumbs"></div>
+        <ul class="folder-list" id="pref-dirs"></ul>
+        <div class="pref-scan" id="pref-scan"></div>
+        <div class="sheet-buttons">
+          <button class="aqua" id="pref-rescan">Rescan Library</button>
+          <span class="spring"></span>
+          <button class="aqua" id="pref-choose">Choose This Folder</button>
+          <button class="aqua default" id="pref-done">Done</button>
+        </div>
+      </div>
+    </div>
+
+    <ul class="context-menu" id="context-menu" hidden></ul>
+  </div>
+
+  <audio id="audio" preload="auto"></audio>
+  <div class="drag-ghost" id="drag-ghost"></div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

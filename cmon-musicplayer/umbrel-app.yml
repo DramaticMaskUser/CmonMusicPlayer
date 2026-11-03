@@ -1,0 +1,29 @@
+manifestVersion: 1
+id: cmon-musicplayer
+category: media
+name: CmonMusicPlayer
+version: "1.0.0"
+tagline: A classic brushed-metal jukebox for your music folder
+description: >-
+  CmonMusicPlayer is a simple, no-nonsense music player that looks and feels
+  like the classic iTunes of the early 2000s.
+
+
+  Point it at a folder in your Umbrel storage and it builds your library,
+  rescanning for new music every time it launches. Create playlists, drag songs
+  from your Library into them, rate songs, and play everything in order or on
+  shuffle - right from your browser.
+releaseNotes: ""
+developer: DramaticMaskUser
+website: https://github.com/DramaticMaskUser/CmonMusicPlayer
+dependencies: []
+repo: https://github.com/DramaticMaskUser/CmonMusicPlayer
+support: https://github.com/DramaticMaskUser/CmonMusicPlayer/issues
+port: 8337
+gallery: []
+icon: https://raw.githubusercontent.com/DramaticMaskUser/CmonMusicPlayer/main/cmon-musicplayer/icon.svg
+path: ""
+defaultUsername: ""
+defaultPassword: ""
+submitter: DramaticMaskUser
+submission: https://github.com/DramaticMaskUser/CmonMusicPlayer

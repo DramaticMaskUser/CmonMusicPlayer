@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="metal" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f4f4f4"/>
+      <stop offset="1" stop-color="#a9a9a9"/>
+    </linearGradient>
+    <radialGradient id="disc" cx="0.4" cy="0.35" r="0.75">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.45" stop-color="#d9e6f7"/>
+      <stop offset="0.7" stop-color="#b9cde8"/>
+      <stop offset="1" stop-color="#8ea8cc"/>
+    </radialGradient>
+    <linearGradient id="note" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4f8de6"/>
+      <stop offset="1" stop-color="#1747a6"/>
+    </linearGradient>
+  </defs>
+  <rect width="256" height="256" rx="56" fill="url(#metal)"/>
+  <circle cx="128" cy="128" r="100" fill="url(#disc)" stroke="#7d93b3" stroke-width="3"/>
+  <circle cx="128" cy="128" r="70" fill="none" stroke="#ffffff" stroke-opacity="0.5" stroke-width="2"/>
+  <circle cx="128" cy="128" r="20" fill="#f6f6f6" stroke="#8ea8cc" stroke-width="3"/>
+  <g fill="url(#note)">
+    <path d="M110 70 L170 58 V160 a20 16 -15 1 1 -12 -14 V92 L122 99 V172 a20 16 -15 1 1 -12 -14 Z"/>
+  </g>
+</svg>

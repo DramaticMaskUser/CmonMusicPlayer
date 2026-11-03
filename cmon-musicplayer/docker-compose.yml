@@ -1,0 +1,19 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      APP_HOST: cmon-musicplayer_web_1
+      APP_PORT: 3000
+
+  web:
+    image: ghcr.io/dramaticmaskuser/cmonmusicplayer:1.0.0
+    restart: on-failure
+    user: "1000:1000"
+    environment:
+      DATA_DIR: /data
+      MEDIA_ROOT: /umbrel-home
+    volumes:
+      - ${APP_DATA_DIR}/data:/data
+      # The Umbrel Files storage, mounted read-only: the player never modifies your music.
+      - ${UMBREL_ROOT}/home:/umbrel-home:ro
